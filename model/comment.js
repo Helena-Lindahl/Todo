@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 
 const schemaComment = new mongoose.Schema(
     {
-        text:String,
-        date: { type: Date,  default: Date.now }, 
-        author:String
+        task: {type:String },
+        timescale: {type:String },
+        when: { type: String }
+        
     }
 )
 

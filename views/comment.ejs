@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="/main.css">
 </head>
+
 <body>
-    <% comments.forEach( (comment)=>{ %>
-          
-          <div> <%= comment.text %></div>
-          <div><%= comment.author %></div>
-          <div><%= comment.date %></div>
-
-  <%  }) %>
-
-
-<div>
-        <form action="/createcomment" method="post">
-         
-         <input type="text" name="text" id="">
-         <input type="text" name="author" id="">
-        <button type="submit">Post comment</button>
-
+    <div>
+        <form action="/createcomment/" method="Post">
+            <label>Enter task:</label><br>
+            <input type="text" name="task" id="" placeholder="Clean e.g..."><br>
+            <label>Enter time requirement:</label><br>
+            <input type="number" name="timescale" id="" placeholder="In hours..."><br>
+            <label>Enter implementation date:</label><br>
+            <input type="date" name="when" id=""><br>
+            <button type="submit">Add task</button>
         </form>
 
-</div>
+        <a href="/about">About</a>
+
+        <% comments.forEach( (comment)=>{ %>
+
+        <div><%= comment.task %></div>
+        <div><%= comment.timescale + " hours" %></div>
+        <div><%= comment.when %></div>
+
+        <button><a href="/update/<%=comment._id%>"> Update</a></button>
+        <button><a href="/delete/<%= comment._id%>"> Delete</a></button>
+
+        
+        <%  }) %>
+    </div>
 
 </body>
+
 </html>
